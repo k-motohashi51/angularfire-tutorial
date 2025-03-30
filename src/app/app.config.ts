@@ -9,15 +9,6 @@ import { provideStorage, getStorage, connectStorageEmulator } from '@angular/fir
 import { routes } from './app.routes';
 import { provideRouter } from '@angular/router';
 
-export const firebaseConfig = {
-  apiKey: "process.env.VUE_APP_API_KEY",
-  authDomain: "process.env.VUE_APP_AUTH_DOMAIN",
-  projectId: "process.env.VUE_APP_PROJECT_ID",
-  storageBucket: "process.env.VUE_APP_STORAGE_BUCKET",
-  messagingSenderId: "process.env.VUE_APP_MESSAGING_SENDING_ID",
-  appId: "process.env.VUE_APP_APP_ID"
-};
-
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(
@@ -28,6 +19,6 @@ export const appConfig: ApplicationConfig = {
       provideStorage(() => getStorage()),
       provideMessaging(() => getMessaging())
     ),
-    provideRouter(routes), provideFirebaseApp(() => initializeApp(firebaseConfig)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideMessaging(() => getMessaging()), provideStorage(() => getStorage())
+    provideRouter(routes), provideFirebaseApp(() => initializeApp({"projectId":"friendlychat-49419","appId":"1:786341589403:web:a6c2b990ab33ab6473713e","storageBucket":"friendlychat-49419.firebasestorage.app","apiKey":"AIzaSyD88_xdGpVnDny9INcz1-3Pd2b_7lbdgvE","authDomain":"friendlychat-49419.firebaseapp.com","messagingSenderId":"786341589403"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideMessaging(() => getMessaging()), provideStorage(() => getStorage())
   ],
 };

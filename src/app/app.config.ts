@@ -9,6 +9,15 @@ import { provideStorage, getStorage, connectStorageEmulator } from '@angular/fir
 import { routes } from './app.routes';
 import { provideRouter } from '@angular/router';
 
+export const firebaseConfig = {
+  apiKey: "process.env.VUE_APP_API_KEY",
+  authDomain: "process.env.VUE_APP_AUTH_DOMAIN",
+  projectId: "process.env.VUE_APP_PROJECT_ID",
+  storageBucket: "process.env.VUE_APP_STORAGE_BUCKET",
+  messagingSenderId: "process.env.VUE_APP_MESSAGING_SENDING_ID",
+  appId: "process.env.VUE_APP_APP_ID"
+};
+
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(
@@ -19,6 +28,6 @@ export const appConfig: ApplicationConfig = {
       provideStorage(() => getStorage()),
       provideMessaging(() => getMessaging())
     ),
-    provideRouter(routes)
+    provideRouter(routes), provideFirebaseApp(() => initializeApp(firebaseConfig)), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideMessaging(() => getMessaging()), provideStorage(() => getStorage())
   ],
 };
